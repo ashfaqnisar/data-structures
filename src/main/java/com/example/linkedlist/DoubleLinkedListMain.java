@@ -116,6 +116,20 @@ class DoubleLinkedList{
             System.out.println("Unable to find the node with this value");
         }
     }
+
+    public DoubleLinkedListNode[] getEnumerable(){
+        DoubleLinkedListNode[] enumerable = new DoubleLinkedListNode[count];
+        DoubleLinkedListNode current = head;
+        int i = 0;
+        while (current != null){
+            enumerable[i] = current;
+            current = current.next;
+            i++;
+        }
+        return enumerable;
+    }
+
+
 }
 
 public class DoubleLinkedListMain {
@@ -140,6 +154,12 @@ public class DoubleLinkedListMain {
         list.remove(6);
         list.print();
         System.out.println("Count: " + list.getCount());
+
+        System.out.println("Enumeration");
+
+        for(DoubleLinkedListNode node : list.getEnumerable()){
+            System.out.println("The data is "+ node.getData());
+        }
 
     }
 }
