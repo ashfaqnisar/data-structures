@@ -20,12 +20,12 @@ class SortedDoubleLinkedListNode {
     }
 }
 
-class SortedDoubledLinkedList {
+class SortedDoubleLinkedList {
     private SortedDoubleLinkedListNode head;
     private SortedDoubleLinkedListNode tail;
     private int count;
 
-    public SortedDoubledLinkedList() {
+    public SortedDoubleLinkedList() {
         this.head = null;
         this.tail = null;
         this.count = 0;
@@ -150,9 +150,9 @@ class SortedDoubledLinkedList {
 
 }
 
-public class SortedDoubledLinkedListMain {
+public class SortedDoubleLinkedListMain {
     public static void main(String[] args) {
-        SortedDoubledLinkedList sortedList = new SortedDoubledLinkedList();
+        SortedDoubleLinkedList sortedList = new SortedDoubleLinkedList();
 
         for (int i = 0; i < 10; i++) {
             sortedList.add((int) (Math.random() * 100));
