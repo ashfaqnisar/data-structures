@@ -56,6 +56,19 @@ class SortedDoubledLinkedList {
             tail = newNode;
         } else {
             SortedDoubleLinkedListNode current = head.next;
+            while (current != null){
+                if(value <= current.getData()){
+                    newNode.next = current;
+                    newNode.prev = current.prev;
+                    current.prev.next = newNode;
+                    current.prev = newNode;
+                    break;
+                }
+                current = current.next;
+            }
+
+//            With Two Variables
+            /*SortedDoubleLinkedListNode current = head.next;
             SortedDoubleLinkedListNode previous = head;
             while(current != null){
                 if(value <= current.getData()){
@@ -67,7 +80,7 @@ class SortedDoubledLinkedList {
                 }
                 previous = current;
                 current = current.next;
-            }
+            }*/
         }
         count++;
     }
