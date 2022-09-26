@@ -15,24 +15,8 @@ class DoubleLinkedListNode{
         return data;
     }
 
-    public void setData(int data) {
-        this.data = data;
-    }
-
     public DoubleLinkedListNode getNext() {
         return next;
-    }
-
-    public void setNext(DoubleLinkedListNode next) {
-        this.next = next;
-    }
-
-    public DoubleLinkedListNode getPrev() {
-        return prev;
-    }
-
-    public void setPrev(DoubleLinkedListNode prev) {
-        this.prev = prev;
     }
 }
 
@@ -98,6 +82,40 @@ class DoubleLinkedList{
             current = current.prev;
         }
     }
+
+    public DoubleLinkedListNode find(int value){
+        DoubleLinkedListNode current = head;
+        while(current != null){
+            if(current.getData() == value){
+                return current;
+            }
+            current = current.next;
+        }
+        return null;
+    }
+
+    public boolean contains(int value){
+        return find(value) != null;
+    }
+
+    public void remove(int value){
+        DoubleLinkedListNode foundNode = find(value);
+        if (foundNode != null){
+            if (foundNode == head){
+                head = head.next;
+                head.prev = null;
+            } else if(foundNode == tail){
+                tail = tail.prev;
+                tail.next = null;
+            } else {
+                foundNode.prev.next = foundNode.next;
+                foundNode.next.prev = foundNode.prev;
+            }
+            count--;
+        } else {
+            System.out.println("Unable to find the node with this value");
+        }
+    }
 }
 
 public class DoubleLinkedListMain {
@@ -116,5 +134,12 @@ public class DoubleLinkedListMain {
         System.out.println("Tail: " + list.getTail().getData());
 
         list.printReverse();
+
+        System.out.println("Contains 20: " + list.contains(20));
+
+        list.remove(6);
+        list.print();
+        System.out.println("Count: " + list.getCount());
+
     }
 }

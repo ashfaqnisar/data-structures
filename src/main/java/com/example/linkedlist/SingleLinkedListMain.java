@@ -1,8 +1,14 @@
 package com.example.linkedlist;
 
+import javax.xml.xpath.XPathEvaluationResult;
+
 class SingleLinkedListNode {
     int data;
     SingleLinkedListNode next;
+
+    public int getData() {
+        return data;
+    }
 
     public SingleLinkedListNode(int data) {
         this.data = data;
@@ -34,7 +40,7 @@ class SingleLinkedList {
         return count;
     }
 
-    public void add(int data){
+    public void add(int data) {
         SingleLinkedListNode newNode = new SingleLinkedListNode(data);
         if (head == null) {
             head = newNode;
@@ -45,7 +51,7 @@ class SingleLinkedList {
         count++;
     }
 
-    public void print(){
+    public void print() {
         SingleLinkedListNode current = head;
         while (current != null) {
             System.out.println(current.data);
@@ -54,10 +60,45 @@ class SingleLinkedList {
     }
 
 
+    public SingleLinkedListNode find(int value) {
+        SingleLinkedListNode current = head;
+        while (current != null) {
+            if (current.getData() == value) {
+                return current;
+            }
+            current = current.next;
+        }
+        return null;
+    }
+
+    public boolean contains(int value) {
+        return find(value) != null;
+    }
+
+    public void delete(int value) {
+        SingleLinkedListNode current = head;
+        SingleLinkedListNode previous = null;
+
+        while (current != null){
+            if (current.getData() == value){
+                if(previous == null){
+                    head = current.next;
+                } else {
+                    previous.next = current.next;
+                }
+                count--;
+                return;
+            }
+            previous = current;
+            current = current.next;
+        }
+    }
+
+
 }
 
-public class SingleLinkedListMain{
-    public static void main(String[] args){
+public class SingleLinkedListMain {
+    public static void main(String[] args) {
         SingleLinkedList list = new SingleLinkedList();
         list.add(5);
         list.add(1);
@@ -68,9 +109,16 @@ public class SingleLinkedListMain{
 
         System.out.println(list.getHead().data);
         System.out.println(list.getTail().data);
-        System.out.println(list.getCount() +  "\n\n");
+        System.out.println(list.getCount() + "\n\n");
 
         System.out.println("Printing list");
+        list.print();
+
+        System.out.println("Contains 3: " + list.contains(3));
+
+        System.out.println("Deleting 5");
+        list.delete(5);
+
         list.print();
     }
 
