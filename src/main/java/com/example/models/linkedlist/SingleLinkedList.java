@@ -1,20 +1,6 @@
-package com.example.linkedlist;
+package com.example.models.linkedlist;
 
-class SingleLinkedListNode {
-    int data;
-    SingleLinkedListNode next;
-
-    public int getData() {
-        return data;
-    }
-
-    public SingleLinkedListNode(int data) {
-        this.data = data;
-        this.next = null;
-    }
-}
-
-class SingleLinkedList {
+public class SingleLinkedList {
     private SingleLinkedListNode head;
     private SingleLinkedListNode tail;
 
@@ -92,32 +78,5 @@ class SingleLinkedList {
         }
     }
 
-
-}
-
-public class SingleLinkedListMain {
-    public static void main(String[] args) {
-        SingleLinkedList list = new SingleLinkedList();
-        list.add(5);
-        list.add(1);
-        list.add(2);
-        list.add(1);
-        list.add(3);
-        list.add(4);
-
-        System.out.println(list.getHead().data);
-        System.out.println(list.getTail().data);
-        System.out.println(list.getCount() + "\n\n");
-
-        System.out.println("Printing list");
-        list.print();
-
-        System.out.println("Contains 3: " + list.contains(3));
-
-        System.out.println("Deleting 5");
-        list.delete(5);
-
-        list.print();
-    }
 
 }
